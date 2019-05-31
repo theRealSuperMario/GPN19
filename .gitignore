@@ -1,3 +1,6 @@
 .vscode/settings.json
 edflow/.idea
 logs
+*.png
+mlflow_excersize/mlflow/*
+.vscode/launch.json
