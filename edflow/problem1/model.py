@@ -28,18 +28,6 @@ def mnist_model(x):
     return probs, logits
 
 
-def loss(logits, labels):
-    """Calculates the loss from the logits and the labels.
-    Args:
-    logits: Logits tensor, float - [batch_size, NUM_CLASSES].
-    labels: Labels tensor, int32 - [batch_size].
-    Returns:
-    loss: Loss tensor of type float.
-    """
-    labels = tf.to_int64(labels)
-    return tf.losses.sparse_softmax_cross_entropy(labels=labels, logits=logits)
-
-
 class TrainModel(object):
     def __init__(self, config):
         self.config = config
@@ -50,13 +38,16 @@ class TrainModel(object):
     @property
     def inputs(self):
         '''
-        inputs of model at inference time
+        A dictionary of inputs to the model at inference time.
+        The keys have to be the same as the returned keys from the example class.
+        The values have to be tensorflow placeholders.
+
         Returns
         -------
 
         '''
-        return {'image': self.image,
-                "target" : self.targets}
+        _inputs = # TODO: fill this in
+        return _inputs
 
 
     @property
@@ -88,7 +79,7 @@ class TrainModel(object):
             ))
 
         # model definition
-        model = nn.make_model("model", mnist_model)
+        model = nn.make_model("model", mnist_model) # <--- remember the model name for the trainer later
         probs, logits = model(self.image)
 
         # outputs

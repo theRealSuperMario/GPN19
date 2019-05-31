@@ -3,6 +3,7 @@ from edflow.iterators.batches import DatasetMixin, make_batches
 from edflow.iterators.batches import resize_float32 as resize
 import numpy as np
 
+
 class Dataset_MNIST(DatasetMixin):
     def __init__(self, config):
         '''
@@ -37,14 +38,11 @@ class Dataset_MNIST(DatasetMixin):
         Returns
         -------
             a dict of data for this idx
-
         '''
         example = dict()
 
-        image = self.data_train[0][idx]
-        class_ = self.data_train[1][idx]
-        example["image"] = self.preprocess(image)
-        example["target"] = class_
+        example["image"] = # TODO: fill this in
+        example["target"] = # TODO: fill this in
         return example
 
     def __len__(self):
