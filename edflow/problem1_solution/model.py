@@ -1,8 +1,9 @@
 import tensorflow as tf
-from edflow.iterators.trainer import TFBaseTrainer
-import mnist_tf.nn as nn
-from examples.mnist_tf.nn import conv2D, dense
 from tensorflow.contrib.framework.python.ops import arg_scope
+
+
+import nn as nn
+from nn import conv2D, dense
 
 
 # mnist example form
@@ -95,33 +96,4 @@ class TrainModel(object):
         self.classes = tf.argmax(probs, axis=1)
 
 
-class Trainer(TFBaseTrainer):
-    def get_restore_variables(self):
-        ''' nothing fancy here '''
-        return super().get_restore_variables()
 
-
-    def initialize(self, checkpoint_path = None):
-        ''' in this case, we do not need to initialize anything special '''
-        return super().initialize(checkpoint_path)
-
-
-
-    def make_loss_ops(self):
-        probs = self.model.outputs["probs"]
-        logits = self.model.logits
-        targets = self.model.inputs["target"]
-        correct = tf.nn.in_top_k(probs, tf.cast(targets, tf.int32), k=1)
-        acc = tf.reduce_mean(tf.cast(correct, tf.float32))
-
-        ce = loss(logits, targets)
-
-        # losses are applied for each model
-        # basically, we look for the string in the variables and update them with the loss provided here
-        losses = dict()
-        losses["model"] = ce
-
-        # metrics for logging
-        self.log_ops["acc"] = acc
-        self.log_ops["ce"] = ce
-        return losses
