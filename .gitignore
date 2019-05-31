@@ -1,1 +1,4 @@
 .vscode/settings.json
+*.png
+mlflow_excersize/mlflow/*
+.vscode/launch.json
