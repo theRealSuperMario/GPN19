@@ -3,7 +3,6 @@ from edflow.iterators.batches import DatasetMixin, make_batches
 from edflow.iterators.batches import resize_float32 as resize
 import numpy as np
 
-
 class Dataset_MNIST(DatasetMixin):
     def __init__(self, config):
         '''
@@ -17,6 +16,7 @@ class Dataset_MNIST(DatasetMixin):
         # Tuple of Numpy arrays: `(x_train, y_train), (x_test, y_test)`.
         self.data_train, self.data_test = tf.keras.datasets.mnist.load_data(path='mnist.npz')
         self.im_shape = config.get('spatial_size', [28, 28]) # if not found, default value
+        self.is_train = self.config.get("is_train", True)
         if isinstance(self.im_shape, int):
             self.im_shape = [self.im_shape] * 2
 
@@ -28,7 +28,7 @@ class Dataset_MNIST(DatasetMixin):
         return np.expand_dims(r, -1)
 
     def get_example(self, idx):
-        '''
+        """
         similar to getitem, this method returns A DICT of values for the index idx.
         Parameters
         ----------
@@ -38,13 +38,21 @@ class Dataset_MNIST(DatasetMixin):
         Returns
         -------
             a dict of data for this idx
-        '''
-        example = dict()
 
-        # What we want to return is an example at idx from the self.data_train array
-        example["image"] = # TODO: fill this in
-        example["target"] = # TODO: fill this in
+        """
+        example = dict()
+        if self.is_train:
+            image = self.data_train[0][idx]
+            class_ = self.data_train[1][idx]
+        else:
+            image = self.data_test[0][idx]
+            class_ = self.data_test[1][idx]
+        example["image"] = self.preprocess(image)
+        example["target"] = class_
         return example
 
     def __len__(self):
-        return len(self.data_train[0])
+        if self.is_train:
+            return len(self.data_train[0])
+        else:
+            return len(self.data_test[0])
