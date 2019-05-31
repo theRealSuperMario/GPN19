@@ -1,4 +1,4 @@
-from edflow.iterators.trainer import TFBaseTrainer
+from edflow.iterators.tf_trainer import TFBaseTrainer
 import tensorflow as tf
 
 
