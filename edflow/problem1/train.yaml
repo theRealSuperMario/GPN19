@@ -1,7 +1,7 @@
 # must specify
-model: problem1_solution.model.TrainModel
-dataset: problem1_solution.data.Dataset_MNIST
-iterator: problem1_solution.trainer.Trainer
+model: # TODO fill this in
+dataset: # TODO fill this in
+iterator: # TODO fill this in
 
 batch_size: 5
 num_steps: 1001
