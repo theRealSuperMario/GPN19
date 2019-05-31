@@ -12,7 +12,7 @@ from sklearn.model_selection import train_test_split
 random_state = 40
 np.random.seed(random_state)
 
-# Load the diabetes dataset
+# Load the boston dataset
 boston = datasets.load_boston()
 X_train, X_test, y_train, y_test = \
     train_test_split(boston.data, boston.target, random_state=random_state)
