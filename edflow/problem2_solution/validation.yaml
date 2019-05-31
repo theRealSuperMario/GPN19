@@ -1,0 +1,14 @@
+# must specify
+#iterator: mnist_tf.model.Trainer
+model: problem2_solution.model.TrainModel
+dataset: problem2_solution.data.Dataset_MNIST
+iterator: problem2_solution.iterators.ValidationIterator
+
+
+is_train : False
+spatial_size: 28
+batch_size : 28
+n_processes : 1
+
+# cd edflow/examples
+# run with edflow -t mnist_tf/train.yaml -n mnist_tf -e validation.yaml
