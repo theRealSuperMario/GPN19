@@ -21,7 +21,7 @@ source activate ml_talk
 
 * then install requirements
 ```bash
-pip install -r requirements.txt
+pip install -r mlflow_excersize/requirements.txt
 pip install -r requirements_edflow.txt
 ```
 
@@ -44,3 +44,9 @@ edflow -t problem1_solution/train.yaml -p project_folder # continue training mod
 
 edflow -t problem2_solution/train.yaml -e problem2_solution/validation.yaml # add validation
 ```
+
+# Part 2 - MLFlow
+It consists only of adding some simple logging statements to `mlflow_excersize/linear_model.py` and `mlflow_excersize/linear_model_lasso.py` (compare `mlflow_excersize/linear_model_mlflow.py`) and afterwards running `mlflow ui --filestore mlflow_excersize/mlflow`.
+
+# Part 3 - Project Structure
+The template is available under: https://github.com/LeanderK/cookiecutter-ml
