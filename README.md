@@ -1,6 +1,7 @@
 # GPN 19 - Talk on ML Workflow Tools
 
 https://entropia.de/GPN19:ML_Workflow_Tools_Overview
+https://pretalx.entropia.de/gpn19/talk/B3HDR3/
 
 Modern ML workflow requires to run experiments fast at a large scale. 
 In order to stay sane and keep an overview of what is going on, there are some tools out there.
