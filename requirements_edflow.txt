@@ -24,7 +24,7 @@ more-itertools==7.0.0
 natsort==6.0.0
 networkx==2.3
 numpy==1.16.4
-opencv-python==4.1.0.25
+opencv-python==4.1.1.26
 pandas==0.24.2
 Pillow==6.0.0
 pluggy==0.12.0
