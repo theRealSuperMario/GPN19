@@ -23,7 +23,7 @@ mock==3.0.5
 more-itertools==7.0.0
 natsort==6.0.0
 networkx==2.3
-numpy==1.16.4
+numpy==1.22.0
 opencv-python==4.1.0.25
 pandas==0.24.2
 Pillow==6.0.0
